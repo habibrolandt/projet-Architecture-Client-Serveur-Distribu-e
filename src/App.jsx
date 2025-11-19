@@ -15,6 +15,7 @@ function App() {
     gameOver: false,
     secretNumber: null,
     totalAttempts: 0,
+    timeRemaining: 30,
   })
   const [connectionError, setConnectionError] = useState("")
 
@@ -39,6 +40,7 @@ function App() {
             welcomeMessage: data.message,
             attempts: [],
             gameOver: false,
+            timeRemaining: 30,
           }))
         } else if (data.type === "response") {
           setGameState((prev) => ({
@@ -66,7 +68,20 @@ function App() {
             gameOver: false,
             secretNumber: null,
             totalAttempts: 0,
+            timeRemaining: 30,
           })
+        } else if (data.type === "timer_update") {
+          setGameState((prev) => ({
+            ...prev,
+            timeRemaining: data.time_remaining,
+          }))
+        } else if (data.type === "timeout") {
+          setGameState((prev) => ({
+            ...prev,
+            gameOver: true,
+            secretNumber: data.secret_number,
+            totalAttempts: prev.attempts.length,
+          }))
         } else if (data.type === "error") {
           alert(data.message)
         }
@@ -122,6 +137,7 @@ function App() {
       gameOver: false,
       secretNumber: null,
       totalAttempts: 0,
+      timeRemaining: 30,
     })
   }
 
@@ -163,4 +179,4 @@ function App() {
   )
 }
 
-export default App
+export default App

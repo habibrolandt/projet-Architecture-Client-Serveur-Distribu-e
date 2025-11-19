@@ -14,11 +14,7 @@ function ConnectionForm({ onConnect, serverUrl, setServerUrl, connectionError })
     <div className="max-w-2xl mx-auto">
       <div className="glass-effect rounded-2xl p-8">
         <div className="text-center mb-6">
-          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
+          
           <h2 className="text-3xl font-bold text-gray-800 mb-2">Connexion au Serveur</h2>
           <p className="text-gray-600">Entrez l'adresse du serveur Python pour commencer à jouer</p>
         </div>
